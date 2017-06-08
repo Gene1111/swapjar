@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="SwapJar">
+	<description>game</description>
+	<echo>game</echo>
+	<echo>${basedir}</echo>
+
+	<property name="java-version" value="1.8" />
+	<property name="app-version" value="0.1" />
+	<property name="is-debug" value="on" />
+	
+	<target name="clean">
+			<delete dir="build"/>
+		</target>
+		<target name="init" depends="clean">
+			<mkdir dir="build"/>
+		</target>
+	
+	<target name="compiler-class" depends="init">
+		<javac srcdir="src" destdir="build" source="${java-version}" target="${java-version}" debug="${is-debug}" includeAntRuntime="false"/>
+	</target>
+	
+	<target name="build-jar" depends="compiler-class">
+		<jar basedir="build" destfile="build/swapjar.jar"/>
+	</target>
+	
+</project>
